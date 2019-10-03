@@ -6,7 +6,7 @@ var icon = function(){
         var icon_bar = document.createElement('span');
         icon_bar.setAttribute('class', 'icon-bar');
         icon_array.push(icon_bar);
-        console.log(icon_array);
+        //console.log(icon_array);
 
     }
 };
@@ -23,7 +23,7 @@ var add_icon_bars = function(){
 
 add_icon_bars();
 
-console.log(navbar_toggle);
+//console.log(navbar_toggle);
 
 //Waseem Nawaz in the navbar
 
@@ -34,13 +34,13 @@ waseemInner.setAttribute('href', '#');
 waseemInner.innerHTML ='WASEEM NAWAZ';
 
 waseem.appendChild(waseemInner);
-console.log(waseem);
+//console.log(waseem);
 
-//navbar titles added dynamically in li elements
+//navbar titles and innerHTML added dynamically in li elements
 let navbar_right = document.querySelector('.navbar-right');
 
 let slugs_array = ["#work", "#intro", "#kntkto"];
-let new_slugs_array = [];
+//let new_slugs_array = [];
 
 let nav_li;
 let nav_li_a;
@@ -55,37 +55,152 @@ var add_slugs_to_nav_lis = function(){
         nav_li_a.innerHTML = navbarElements[i];
         nav_li.appendChild(nav_li_a);
         //new_slugs_array.push(nav_li);
-        console.log(nav_li);
+        //console.log(nav_li);
         navbar_right.appendChild(nav_li);
     }
 };
 
-// slugs_array.forEach(function(item){
-//     nav_li = document.createElement('li');
-//     nav_li_a = document.createElement('a');
-//     nav_li_a.setAttribute('href', item);
-//     nav_li.appendChild(nav_li_a);
-//     //new_slugs_array.push(nav_li);
-//     //console.log(new_slugs_array);
-//     return nav_li;
-// });
-
 add_slugs_to_nav_lis();
 
-console.log(navbar_right);
+//console.log(navbar_right);
 
-//add innerHTML to the added li elements above
+// //The introduction
 
-// var add_elements_to_nav = function(){
-//     for(var j = 0; j < navbarElements.length; j++){
-//         nav_li = document.createElement('li');
-//         nav_li_a = document.createElement('a');
-//         nav_li_a.innerHTML = navbarElements[j];
-//         nav_li.appendChild(nav_li_a);
-//         //new_slugs_array.push(nav_li);
-//         console.log(nav_li);
-//         navbar_right.appendChild(nav_li);
-//     }
-// };
+// var workintro = document.createElement('div');
+// workintro.setAttribute('class', 'workintro');
 
-// add_elements_to_nav();
+// var work = document.getElementById('work');
+
+// var h31 = document.createElement('h3');
+// var h31text = document.createTextNode('Hello Waseem Nawaz, Web Developer for hire.');
+// h31.appendChild(h31text);
+// //h31.innerText = "Hello Waseem Nawaz, Web Developer for hire.";
+
+// var p1 = document.createElement('p');
+// p1.innerHTML = "Below are the static and Ruby on Rails sites that I created myself. Some of the pages are slow to load at first as they are hosted on Heroku for free. So please be patient. The link to my Github is in the Contact section.";
+
+// work.appendChild(workintro);
+// workintro.appendChild(h31);
+// workintro.appendChild(p1);
+// console.log(rowes);
+
+//Creating the Object for the work samples
+
+var worksamples = 
+[
+    {
+        href: "https://bikeberlin.herokuapp.com/",
+        scr: "img/bike1.jpg",
+        title: "BikeBerlin",
+        text: "A complete working Ruby on Rails website created as part of my Web Development course at Careerfoundry."
+
+    },
+
+    {
+        href: "https://maurowgomez.herokuapp.com/",
+        scr: "img/maurow.jpg",
+        title: "Maurow Gómez",
+        text: "A personal website, including a blog, made using Ruby on Rails." 
+    },
+
+    {
+        href: "https://mynewblogg.herokuapp.com/",
+        scr: "img/forest.jpg",
+        title: "Waseem's blog",
+        text: "A blog made using Ruby on Rails."
+
+    },
+
+    {
+        href: "https://alpacasweatr.herokuapp.com/",
+        scr: "img/sweatr12.jpg",
+        title: "Sweatr",
+        text: "A Ruby on Rails website for selling handmade knitware made in Peru by artisan craftswomen."
+    },
+
+    {
+        href: "http://director-karl-30485.bitballoon.com/",
+        scr: "img/laleche.jpg",
+        title: "Cebichería La Leche",
+        text: "A static website for a cebiche restaurant in Lima, Peru."
+    },
+
+    {
+        href: "https://uneteperu.github.io/",
+        scr: "img/unete.jpg",
+        title: "Unete",
+        text: "A static website for an organisation that helps students from socially and economically disadvantaged backgrounds create networks and find employment."
+    }
+   
+];
+
+//work section details added dynamically to rowes div
+var rowes = document.getElementById('rowes');
+var portfolio_item;
+var workhref;
+var workimg;
+var workh3;
+var workhref2;
+var workp;
+
+//console.log(portfolio_item);
+
+var add_info_to_work = function(){
+for(var i = 0; i < worksamples.length; i++){
+    portfolio_item = document.createElement('div');
+    //portfolio_item.setAttribute('class', 'col-md-4');
+    portfolio_item.classList.add('col-md-4', 'portfolio-item');
+    //console.log(portfolio_item);
+    rowes.append(portfolio_item);
+
+
+    //add the href to portfolio_item
+    workhref = document.createElement('a');
+    workhref.setAttribute('href', worksamples[i].href);
+    portfolio_item.appendChild(workhref);
+
+    //create the img element
+    workimg = document.createElement('img');
+    workimg.setAttribute('class', 'img-responsive');
+    workimg.setAttribute('src', worksamples[i].scr);
+    workimg.setAttribute('alt', '');
+
+    workhref.appendChild(workimg);
+
+    //add the h3 tag 
+    workh3 = document.createElement('h3');
+    workhref2 = document.createElement('a');
+    workhref2.setAttribute('href', worksamples[i].href);
+    workhref2.innerHTML = worksamples[i].title;
+    workh3.appendChild(workhref2);
+    portfolio_item.appendChild(workh3);
+
+    //console.log(workhref);
+    //console.log(workh3);
+}
+//portfolio_item.appendChild(workhref);
+};
+
+add_info_to_work();
+console.log(rowes);
+
+//The introduction
+
+var workintro = document.createElement('div');
+workintro.setAttribute('class', 'workintro');
+
+var work = document.getElementById('work');
+
+var h31 = document.createElement('h3');
+var h31text = document.createTextNode('Hello Waseem Nawaz, Web Developer for hire.');
+h31.appendChild(h31text);
+//h31.innerText = "Hello Waseem Nawaz, Web Developer for hire.";
+
+var p1 = document.createElement('p');
+p1.innerHTML = "Below are the static and Ruby on Rails sites that I created myself. Some of the pages are slow to load at first as they are hosted on Heroku for free. So please be patient. The link to my Github is in the Contact section.";
+
+work.insertBefore(workintro, rowes);
+workintro.appendChild(h31);
+workintro.appendChild(p1);
+//console.log(rowes);
+
