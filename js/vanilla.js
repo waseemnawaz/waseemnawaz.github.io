@@ -204,3 +204,117 @@ workintro.appendChild(h31);
 workintro.appendChild(p1);
 //console.log(rowes);
 
+//Programming skills
+
+var skillsArray = ["HTML and CSS",
+    "Bootstrap Front End Framework",
+    "Ruby on Rails MVC Framework",
+    "User Authentication and Authorization",
+    "Git Version Control",
+    "Heroku",
+    "Javascript"
+];
+
+var codingskillz = document.querySelector('.codingskillz');
+var codeul = document.createElement('ul');
+codingskillz.appendChild(codeul);
+var lisCode;
+
+var add_lis_to_ul_skills = function(){
+
+for(var i = 0; i < skillsArray.length; i++){
+lisCode = document.createElement('li');
+lisCode.innerHTML = skillsArray[i];
+codeul.appendChild(lisCode);
+}
+};
+
+add_lis_to_ul_skills();
+
+// the more about me section
+
+
+var intro = document.getElementById('intro');
+var firstpage = document.querySelector('.firstpage');
+var links = document.getElementById('links');
+var trabajos = document.querySelector('.trabajos');
+var divGallery;
+var divImg;
+var divHref;
+
+//headlines and paragraph
+var firstpageh3;
+var firstpagep;
+
+firstpageh3 = document.createElement('h3');
+firstpageh3.innerHTML = "More about me";
+firstpage.appendChild(firstpageh3);
+
+firstpagep = document.createElement('p');
+firstpagep.innerHTML = "I was born in Luxembourg. I went to school in Luxembourg, the UAE and the United Kingdom, where I also went to university. I have a degree in European Community Studies, a graduate Diploma in Economics and a Master's degree in Economics with special reference to Latin America. I speak fluent English, French, German, Luxembourgish and Spanish. I worked in Luxembourg, Nicaragua and Peru. My professional background is mainly non-profit and tourism. I even had a restaurant of my own at one point (I did most of the sweets and cakes there), so I have an entrepreneurial streak as well. I love getting to know different cultures and I have a special interest for Latin America, since I lived there for such a long time. I like learning languages (most recently Portuguese), spending time with friends, conversations, the gym (I try to do my best...), amongst other things. In 2015 I became interested in the web and its technologies. So I decided to learn to code. I then did an online web development course offered by Careerfoundry, specialising in Ruby on Rails.</p>";
+firstpage.appendChild(firstpagep);
+
+//the photos
+
+var photosobject = [
+
+    {
+        img: "img/snow1.jpg",
+        img2: "img/snow1.jpg"
+    },
+
+    {
+        img: "img/snow3.jpg",
+        img2: "img/snow3.jpg"
+    },
+
+    {
+        img: "img/blacktee.jpg",
+        img2: "img/blacktee.jpg"
+    },
+
+    {
+        img: "img/snow4.jpg",
+        img2: "img/snow4.jpg"
+    },
+
+    {
+        img: "img/IMG_1569.jpg",
+        img2: "img/IMG_0712manlisboa.jpg"
+    },
+
+    {
+        img: "img/IMG_0654.jpg",
+        img2: "img/IMG_0654.jpg"
+    },
+
+    {
+        img: "img/nata1.jpg",
+        img2: "img/nata1.jpg"
+    },
+
+    {
+        img: "img/IMG_0987.jpg",
+        img2: "img/IMG_0987.jpg"
+    }
+
+];
+
+var add_pics_to_gallery = function(array){
+    for(var i = 0; i < array.length; i++){
+        // the div
+        divGallery = document.createElement('div');
+        divGallery.classList.add('col-md-3', 'col-xs-6');
+        links.appendChild(divGallery);
+
+        // the a href
+        
+        console.log(intro);
+    }
+    //console.log(intro);
+}
+
+add_pics_to_gallery(photosobject);
+
+
+console.log(intro);
