@@ -308,8 +308,25 @@ var add_pics_to_gallery = function(array){
         links.appendChild(divGallery);
 
         // the a href
+        divHref = document.createElement('a');
+        divHref.setAttribute('href', array[i].img);
+        divGallery.appendChild(divHref);
+
+        //the img
+        divImg = document.createElement('img');
+        divImg.setAttribute('src', array[i].img2);
+        divImg.classList.add('works', 'img-responsive', 'fadez');
+        divGallery.appendChild(divImg);
+
+        if(array[i].img2 === "img/blacktee.jpg" || array[i].img2 === "img/IMG_0987.jpg"){
+            divImg.classList.add('grey');
+        }
+
+        if(array[i].img2 === "img/snow4.jpg"){
+            divImg.classList.add('crazy');
+        }
         
-        console.log(intro);
+        //console.log(divGallery);
     }
     //console.log(intro);
 }
@@ -317,4 +334,111 @@ var add_pics_to_gallery = function(array){
 add_pics_to_gallery(photosobject);
 
 
-console.log(intro);
+//console.log(intro);
+
+//contact section 
+
+//there are two elements with the class black. Take the second one. 
+//save that to theresult
+
+var black = document.querySelectorAll('.black'); 
+var secondblack = function(){
+    for(var i = 0; i < black.length; i++){
+        console.log(black[1]);
+        return black[1];
+    }
+};
+
+var theresult = secondblack();
+console.log(theresult);
+
+//create the contact me headline section
+
+var contacts;
+var kntkto = document.getElementById('kntkto');
+console.log(kntkto);
+
+contacts = document.createElement('div');
+contacts.setAttribute('class', 'contacts');
+
+var contactsH3 = document.createElement('h3');
+contactsH3.innerHTML = "Contact me";
+contacts.appendChild(contactsH3);
+
+theresult.appendChild(contacts);
+kntkto.appendChild(theresult);
+console.log(theresult);
+
+//the first column
+
+var rowz = document.querySelector('#kntkto .row');
+console.log(rowz);
+/*var lastrow = function(){
+    for(var i = 0; i < rowz.length; i++){
+        console.log(rowz[rowz.length - 2]);
+        return rowz[rowz.length - 2];
+    }
+};
+ var thelastRow = lastrow();
+
+ console.log(thelastRow);*/
+
+
+ console.log(rowz.firstElementChild);
+ var firstColLastRow = rowz.firstElementChild;
+ 
+ var imail = document.createElement('div');
+ imail.setAttribute('class', 'imail');
+
+var pimail1 = document.createElement('p');
+pimail1.innerHTML = "You can write me an email:";
+
+var pimail2 = document.createElement('p');
+pimail2.setAttribute('class', 'iimail');
+
+var pimail2Href = document.createElement('a');
+pimail2Href.setAttribute('class', 'mail');
+pimail2Href.setAttribute('href', 'mailto:waseemhijodenawaz@yahoo.es');
+pimail2Href.innerHTML = "waseemhijodenawaz@yahoo.es";
+
+var pimail3 = document.createElement('p');
+pimail3.innerHTML = "Reach out to me on the social media platforms below or by filling out the form:"
+
+imail.appendChild(pimail1);
+
+pimail2.appendChild(pimail2Href);
+imail.appendChild(pimail2);
+
+imail.appendChild(pimail3);
+
+firstColLastRow.appendChild(imail);
+console.log(firstColLastRow);
+
+//social media array with the respective data
+var socialmediaArray = [
+    {
+        href: "https://github.com/waseemnawaz",
+        src: "img/Github1.png",
+        class: "img-responsive social"
+    },
+    {
+        href: "https://twitter.com/guasimnaguaz",
+        src: "img/Twitter1.png",
+        class: "img-responsive social"
+    },
+    {
+        href: "https://www.linkedin.com/in/waseem72nawaz",
+        src: "img/LinkedIn1.png",
+        class: "img-responsive social"
+    }
+];
+
+//what if I just cloned the whole thing?
+
+console.log(imail.previousElementSibling);
+
+var socialMediaThing = imail.previousElementSibling;
+var newMedia = socialMediaThing.cloneNode(true);
+
+console.log(newMedia);
+
