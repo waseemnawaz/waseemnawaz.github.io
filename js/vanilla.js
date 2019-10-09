@@ -482,7 +482,11 @@ firstColLastRow.appendChild(thenewnewmedia);
 //the contact 
 
 //i will not recreate the contact form on the fly because I am bored of that. 
+//The footer
 
+var copyright = document.querySelector('.copyright');
+var d = new Date();
+copyright.innerHTML = "&copy;" + " Waseem Nawaz " + d.getFullYear();
 
 //Plan: on change or blur or focus, do something using event object in contact form
 
@@ -492,7 +496,7 @@ var firstInput = formGroup.firstElementChild.nextElementSibling;
 //firstInput.style.backgroundColor = 'red';
 console.log(firstInput);
 var contactFormColor = function(event){
-    event.preventDefault;
+    event.preventDefault();
     event.target.style.backgroundColor = '#acd7e6';
     event.target.placeholder = "Come on, enter your name please!";
     //event.target.placeholder.value = "Yes your name!!!!";
@@ -500,6 +504,45 @@ var contactFormColor = function(event){
 firstInput.addEventListener('keyup', contactFormColor, true);
 
 
+//email field
+var emailInForm = document.querySelectorAll('.form-group')[1].firstElementChild.nextElementSibling;
+console.log(emailInForm);
 
+
+var contactFormColorInEmail = function(event){
+    event.preventDefault();
+    event.target.style.backgroundColor = '#ffe9ec';
+    event.target.placeholder = "Come on, enter your email please!";
+};
+
+emailInForm.addEventListener('keyup', contactFormColorInEmail, true );
+
+var textarea = document.querySelector('textarea');
+console.log(textarea);
+
+var contactFormColorInTextarea = function(event){
+    event.preventDefault();
+    event.target.style.backgroundColor = '#ffffd4';
+    event.target.placeholder = "Come on, enter your message please!";
+};
+
+textarea.addEventListener('keyup', contactFormColorInTextarea, true);
+
+var button = document.querySelector('button[type="submit"]');
+console.log(button);
+var visibleComment = document.querySelector('#visible-comment');
+console.log(visibleComment);
+
+//i don't really want people using this form. 
+
+var emailWhenSubmit = function(event){
+
+    event.preventDefault();
+    event.target.style.display = "none";
+    visibleComment.style.color = 'white';
+    visibleComment.innerHTML = pimail2Href.innerHTML;
+};
+
+button.addEventListener('click', emailWhenSubmit, true);
 
 
