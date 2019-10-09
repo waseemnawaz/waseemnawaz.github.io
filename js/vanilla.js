@@ -92,7 +92,7 @@ var worksamples =
         href: "https://bikeberlin.herokuapp.com/",
         scr: "img/bike1.jpg",
         title: "BikeBerlin",
-        text: "A complete working Ruby on Rails website created as part of my Web Development course at Careerfoundry."
+        text: "A Ruby on Rails ecommerce website."
 
     },
 
@@ -115,7 +115,7 @@ var worksamples =
         href: "https://alpacasweatr.herokuapp.com/",
         scr: "img/sweatr12.jpg",
         title: "Sweatr",
-        text: "A Ruby on Rails website for selling handmade knitware made in Peru by artisan craftswomen."
+        text: "A Ruby on Rails ecommerce website."
     },
 
     {
@@ -129,7 +129,7 @@ var worksamples =
         href: "https://uneteperu.github.io/",
         scr: "img/unete.jpg",
         title: "Unete",
-        text: "A static website for an organisation that helps students from socially and economically disadvantaged backgrounds create networks and find employment."
+        text: "A website for an organisation that helps poor students find jobs in Lima."
     }
    
 ];
@@ -142,6 +142,10 @@ var workimg;
 var workh3;
 var workhref2;
 var workp;
+var workptext
+var somenumber;
+var allportfolioitems;
+var portfolioArray = [];
 
 //console.log(portfolio_item);
 
@@ -152,7 +156,6 @@ for(var i = 0; i < worksamples.length; i++){
     portfolio_item.classList.add('col-md-4', 'portfolio-item');
     //console.log(portfolio_item);
     rowes.append(portfolio_item);
-
 
     //add the href to portfolio_item
     workhref = document.createElement('a');
@@ -171,19 +174,36 @@ for(var i = 0; i < worksamples.length; i++){
     workh3 = document.createElement('h3');
     workhref2 = document.createElement('a');
     workhref2.setAttribute('href', worksamples[i].href);
-    workhref2.innerHTML = worksamples[i].title;
+    workhref2.innerText = worksamples[i].title;
     workh3.appendChild(workhref2);
     portfolio_item.appendChild(workh3);
 
-    //console.log(workhref);
-    //console.log(workh3);
+    //add the description
+    workp = document.createElement('p');
+    workptext = document.createTextNode(worksamples[i].text);
+    workp.appendChild(workptext);
+    //workp.textContent = worksamples[i].text;
+    //I commented it out because adding text screws up the bootstrap layout for some reason.
+    //portfolio_item.appendChild(workp); 
+    console.log(worksamples[i].href);
+    console.log(worksamples[i].text);
+
+    //how can I randomise the gallery here? 
+    somenumber = Math.floor(Math.random() * worksamples.length);
+    console.log(somenumber);
+
+    portfolioArray.push(portfolio_item);
+    console.log(portfolioArray);
+
+    rowes.appendChild(portfolioArray[Math.floor(Math.random() * portfolioArray.length)]);
+    //this did it!!!!!
 }
 //portfolio_item.appendChild(workhref);
 };
 
 add_info_to_work();
 console.log(rowes);
-
+console.log(portfolio_item)
 //The introduction
 
 var workintro = document.createElement('div');
@@ -399,7 +419,7 @@ pimail2.setAttribute('class', 'iimail');
 var pimail2Href = document.createElement('a');
 pimail2Href.setAttribute('class', 'mail');
 pimail2Href.setAttribute('href', 'mailto:waseemhijodenawaz@yahoo.es');
-pimail2Href.innerHTML = "waseemhijodenawaz@yahoo.es";
+pimail2Href.innerHTML = "waseemhijodenawaz[at]yahoo.es";
 
 var pimail3 = document.createElement('p');
 pimail3.innerHTML = "Reach out to me on the social media platforms below or by filling out the form:"
@@ -415,6 +435,8 @@ firstColLastRow.appendChild(imail);
 console.log(firstColLastRow);
 
 //social media array with the respective data
+//but I did not use this. See below.
+
 var socialmediaArray = [
     {
         href: "https://github.com/waseemnawaz",
@@ -434,11 +456,50 @@ var socialmediaArray = [
 ];
 
 //what if I just cloned the whole thing?
+//so i cloned the whole thing and what is shown is the dynamic bit. 
+//i leave it because it's a learning experience
 
+console.log(imail);
 console.log(imail.previousElementSibling);
 
 var socialMediaThing = imail.previousElementSibling;
-var newMedia = socialMediaThing.cloneNode(true);
+//var newMedia = socialMediaThing.cloneNode(true);
+var newMedia;
+var newnewMedia = function(){
+    newMedia = socialMediaThing.cloneNode(true);
+    //socialMediaThing.style.display = "none";
+    socialMediaThing.remove();
+    console.log(socialMediaThing);
+    return newMedia;
+};
 
-console.log(newMedia);
+var thenewnewmedia = newnewMedia();
+console.log(thenewnewmedia);
+
+theresult.insertBefore(contacts, rowz);//this puts the contact above the other paragraphs
+firstColLastRow.appendChild(thenewnewmedia);
+
+//the contact 
+
+//i will not recreate the contact form on the fly because I am bored of that. 
+
+
+//Plan: on change or blur or focus, do something using event object in contact form
+
+
+var formGroup = document.querySelector('.form-group');
+var firstInput = formGroup.firstElementChild.nextElementSibling; 
+//firstInput.style.backgroundColor = 'red';
+console.log(firstInput);
+var contactFormColor = function(event){
+    event.preventDefault;
+    event.target.style.backgroundColor = '#acd7e6';
+    event.target.placeholder = "Come on, enter your name please!";
+    //event.target.placeholder.value = "Yes your name!!!!";
+};
+firstInput.addEventListener('keyup', contactFormColor, true);
+
+
+
+
 
