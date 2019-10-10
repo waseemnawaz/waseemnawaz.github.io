@@ -320,6 +320,8 @@ var photosobject = [
 
 ];
 
+var photosArray = [];
+
 var add_pics_to_gallery = function(array){
     for(var i = 0; i < array.length; i++){
         // the div
@@ -336,7 +338,9 @@ var add_pics_to_gallery = function(array){
         divImg = document.createElement('img');
         divImg.setAttribute('src', array[i].img2);
         divImg.classList.add('works', 'img-responsive', 'fadez');
-        divGallery.appendChild(divImg);
+        divHref.appendChild(divImg);
+        
+        //divGallery.appendChild(divImg);
 
         if(array[i].img2 === "img/blacktee.jpg" || array[i].img2 === "img/IMG_0987.jpg"){
             divImg.classList.add('grey');
@@ -347,6 +351,9 @@ var add_pics_to_gallery = function(array){
         }
         
         //console.log(divGallery);
+        //random pics in gallery
+        photosArray.push(divGallery);
+        links.appendChild(photosArray[Math.floor(Math.random() * photosArray.length)]);
     }
     //console.log(intro);
 }
@@ -354,7 +361,7 @@ var add_pics_to_gallery = function(array){
 add_pics_to_gallery(photosobject);
 
 
-//console.log(intro);
+console.log(links);
 
 //contact section 
 
@@ -540,9 +547,50 @@ var emailWhenSubmit = function(event){
     event.preventDefault();
     event.target.style.display = "none";
     visibleComment.style.color = 'white';
-    visibleComment.innerHTML = pimail2Href.innerHTML;
+    firstInput.value = '';
+    emailInForm.value = '';
+    textarea.style.fontWeight = 'bold';
+    textarea.style.fontSize = '1.5em';
+    textarea.style.color = '#ff748c';
+    textarea.value = "On second thought, this contact form is really just for decoration purposes. Please click on the email below to write me a message. Thanks."
+    visibleComment.innerHTML = '<a class="mail" href="mailto:waseemhijodenawaz@yahoo.es">waseemhijodenawaz@yahoo.es</a>';
+    visibleComment.style.fontSize = '1.5em';
 };
 
 button.addEventListener('click', emailWhenSubmit, true);
+
+console.log(pimail2Href.outerHTML);
+
+
+//event to reverse my name if mouse hovers over my name
+
+var reverseMe = function(event){
+
+    var text = event.target.innerHTML;
+    event.target.innerHTML = text.split("").reverse().join("");
+};
+
+waseemInner.addEventListener('mouseenter', reverseMe, true);
+waseemInner.addEventListener('mouseleave', reverseMe, true);
+
+//randomise pics on mouseover over photo gallery. 
+
+var randomImages = function(event){
+    event.preventDefault();
+    //console.log(event.target.parentElement);
+    event.currentTarget.parentElement.appendChild(photosArray[Math.floor(Math.random() * photosArray.length)]);
+    //event.currentTarget.parentElement.appendChild(photosArray[Math.floor(Math.random() * photosArray.length)]);
+    
+};
+
+//i don't like the effect because it's crazy and so i commented out the event listener. 
+photosArray.forEach(function(item){
+//item.addEventListener('click', randomImages, true );
+//item.addEventListener('mouseleave', randomImages, true);
+})
+
+//links.addEventListener('mouseover', randomImages, true );
+//links.addEventListener('mouseleave', randomImages, true);
+
 
 
