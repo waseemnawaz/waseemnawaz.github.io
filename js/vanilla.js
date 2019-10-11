@@ -232,7 +232,8 @@ var skillsArray = ["HTML and CSS",
     "User Authentication and Authorization",
     "Git Version Control",
     "Heroku",
-    "Javascript"
+    "Javascript",
+    "WordPress"
 ];
 
 var codingskillz = document.querySelector('.codingskillz');
@@ -583,7 +584,7 @@ var randomImages = function(event){
     
 };
 
-//i don't like the effect because it's crazy and so i commented out the event listener. 
+//i don't like the effect because it's crazy and so i commented out the event listener!!!!!!!!!!!!
 photosArray.forEach(function(item){
 //item.addEventListener('click', randomImages, true );
 //item.addEventListener('mouseleave', randomImages, true);
@@ -593,4 +594,33 @@ photosArray.forEach(function(item){
 //links.addEventListener('mouseleave', randomImages, true);
 
 
+//event to hide the portfolio gallery when a person clicks on one pic
+// use the rowesone div
 
+var rowesone = document.getElementById('rowesone');
+console.log(rowesone);
+console.log(portfolioArray);
+
+/*var showRowesOne = function(){
+    for(var i = 0; i < portfolioArray.length; i++){
+       console.log(portfolioArray[i].innerHTML);
+    }
+
+};*/ //do the event in the thing below
+
+//var resultShowRowesOne = showRowesOne();
+
+
+var hidePortfolioPic = function(event){
+
+    event.preventDefault();
+    event.currentTarget.parentElement.style.display = "none";
+    /*rowesone.style.height = '5em';
+    rowesone.style.backgroundColor = "red";*/
+    rowesone.style.display = 'block';
+    console.log(event.currentTarget.innerHTML);
+};
+
+portfolioArray.forEach(function(item){
+    item.addEventListener('click', hidePortfolioPic, true);
+});
