@@ -169,6 +169,10 @@ for(var i = 0; i < worksamples.length; i++){
     workimg.setAttribute('alt', '');
 
     workhref.appendChild(workimg);
+    console.log(workhref);
+    console.log(portfolio_item);
+    //portfolio_item needs to include the pic!
+    //portfolio_item.appendChild(workhref); rubbish....
 
     //add the h3 tag 
     workh3 = document.createElement('h3');
@@ -182,9 +186,10 @@ for(var i = 0; i < worksamples.length; i++){
     workp = document.createElement('p');
     workptext = document.createTextNode(worksamples[i].text);
     workp.appendChild(workptext);
+    workp.style.display = "none"; //does not show on the main page
     //workp.textContent = worksamples[i].text;
     //I commented it out because adding text screws up the bootstrap layout for some reason.
-    //portfolio_item.appendChild(workp); 
+    portfolio_item.appendChild(workp); 
     console.log(worksamples[i].href);
     console.log(worksamples[i].text);
 
@@ -427,7 +432,7 @@ pimail2.setAttribute('class', 'iimail');
 var pimail2Href = document.createElement('a');
 pimail2Href.setAttribute('class', 'mail');
 pimail2Href.setAttribute('href', 'mailto:waseemhijodenawaz@yahoo.es');
-pimail2Href.innerHTML = "waseemhijodenawaz[at]yahoo.es";
+pimail2Href.innerHTML = "waseemhijodenawaz at yahoo dot es";
 
 var pimail3 = document.createElement('p');
 pimail3.innerHTML = "Reach out to me on the social media platforms below or by filling out the form:"
@@ -544,8 +549,38 @@ console.log(visibleComment);
 //i don't really want people using this form. 
 
 var emailWhenSubmit = function(event){
+    if (firstInput.value === '' && emailInForm.value === '' && textarea.value === ''){
+        event.preventDefault();
+        visibleComment.innerHTML = 'You need to provide a name, an email and a little message please! '; 
+        visibleComment.style.color = 'white';
+        visibleComment.style.fontSize = '1.5em';
+    } else if (firstInput.value.length < 4 || !emailInForm.value.includes('@') || textarea.value.length < 20){
+        event.preventDefault();
+        visibleComment.innerHTML = 'You need to provide a full name, a proper email and a small message (a few words...) please! '; 
+        firstInput.placeholder = '';
+        emailInForm.placeholder = '';
+        visibleComment.style.color = 'white';
+        visibleComment.style.fontSize = '1.5em';
+    } else if (firstInput.value.length >= 4 && emailInForm.value.includes('@') && textarea.value.length >= 20){
+        event.preventDefault();
+        event.target.style.display = "none";
+        visibleComment.style.color = 'white';
+        firstInput.placeholder === '';
+        emailInForm.placeholder === '';
+        textarea.style.fontWeight = 'bold';
+        textarea.style.fontSize = '1.5em';
+        textarea.style.color = '#ff748c';
+        textarea.value = "On second thought, this contact form is really just for decoration purposes. Please click on the email below to write me a message. Thanks."
+        visibleComment.innerHTML = '<a class="mail" href="mailto:waseemhijodenawaz@yahoo.es">waseemhijodenawaz@yahoo.es</a>';
+        visibleComment.style.fontSize = '1.5em';
+        console.log(firstInput.value);
+        console.log(emailInForm.value);
+        console.log(textarea.value);
+        contactsH3.innerHTML = "The Annoying Contact Form";
 
-    event.preventDefault();
+    }
+
+    /*event.preventDefault();
     event.target.style.display = "none";
     visibleComment.style.color = 'white';
     firstInput.value = '';
@@ -555,10 +590,11 @@ var emailWhenSubmit = function(event){
     textarea.style.color = '#ff748c';
     textarea.value = "On second thought, this contact form is really just for decoration purposes. Please click on the email below to write me a message. Thanks."
     visibleComment.innerHTML = '<a class="mail" href="mailto:waseemhijodenawaz@yahoo.es">waseemhijodenawaz@yahoo.es</a>';
-    visibleComment.style.fontSize = '1.5em';
+    visibleComment.style.fontSize = '1.5em';*/
 };
 
-button.addEventListener('click', emailWhenSubmit, true);
+//Actually, I want them to use it so this button event is commented out!
+//button.addEventListener('click', emailWhenSubmit, true);
 
 console.log(pimail2Href.outerHTML);
 
@@ -610,6 +646,10 @@ console.log(portfolioArray);
 
 //var resultShowRowesOne = showRowesOne();
 
+var rowesoneH3 = document.createElement('h3');
+rowesone.appendChild(rowesoneH3);
+
+var rowesoneImg = document.createElement('img');
 
 var hidePortfolioPic = function(event){
 
@@ -618,7 +658,17 @@ var hidePortfolioPic = function(event){
     /*rowesone.style.height = '5em';
     rowesone.style.backgroundColor = "red";*/
     rowesone.style.display = 'block';
-    console.log(event.currentTarget.innerHTML);
+
+    //create a new function for showing this!
+    console.log(event.currentTarget.outerHTML);
+    rowesoneH3.innerHTML = event.target.parentElement.nextElementSibling.firstElementChild.innerText;
+    console.log(event.target.parentElement.href);
+    console.log(event.target.src);
+    console.log(event.target);
+    console.log(event.target.parentElement.parentElement);
+    console.log(event.target.parentElement.nextElementSibling.firstElementChild.innerText);
+    
+
 };
 
 portfolioArray.forEach(function(item){
