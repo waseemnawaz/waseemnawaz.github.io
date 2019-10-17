@@ -646,10 +646,32 @@ console.log(portfolioArray);
 
 //var resultShowRowesOne = showRowesOne();
 
-var rowesoneH3 = document.createElement('h3');
-rowesone.appendChild(rowesoneH3);
+//create the single page div for the works details
+
+var rowesoneDiv = document.createElement('div');
+rowesoneDiv.setAttribute('class', 'portfolio-item');
+rowesone.appendChild(rowesoneDiv);
+
+//create the a tag and img
+var rowesoneA = document.createElement('a');
+//rowesoneA.setAttribute('href', ??);
+rowesoneDiv.appendChild(rowesoneA);
 
 var rowesoneImg = document.createElement('img');
+rowesoneImg.classList.add('img-responsive', 'alt');
+rowesoneA.appendChild(rowesoneImg);
+
+//add the h3 and the innerText
+var rowesoneH3 = document.createElement('h3');
+var rowesoneA2 = document.createElement('a');
+rowesoneH3.appendChild(rowesoneA2);
+rowesoneDiv.appendChild(rowesoneH3);
+
+//the p element
+var rowesoneP = document.createElement('p');
+rowesoneDiv.appendChild(rowesoneP);
+
+
 
 var hidePortfolioPic = function(event){
 
@@ -661,16 +683,23 @@ var hidePortfolioPic = function(event){
 
     //create a new function for showing this!
     console.log(event.currentTarget.outerHTML);
-    rowesoneH3.innerHTML = event.target.parentElement.nextElementSibling.firstElementChild.innerText;
+    //rowesoneH3.innerHTML = event.target.parentElement.nextElementSibling.firstElementChild.innerText;
+    rowesoneA.setAttribute('href', event.target.parentElement.href);
+    rowesoneImg.setAttribute('src', event.target.src);
+    rowesoneA2.setAttribute('href', event.target.parentElement.href);
+    rowesoneA2.innerText = event.target.parentElement.nextElementSibling.firstElementChild.innerText;
+    rowesoneP.innerText = event.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.innerText;
+    
     console.log(event.target.parentElement.href);
     console.log(event.target.src);
     console.log(event.target);
     console.log(event.target.parentElement.parentElement);
     console.log(event.target.parentElement.nextElementSibling.firstElementChild.innerText);
-    
+    console.log(event.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.innerText);
 
 };
 
 portfolioArray.forEach(function(item){
     item.addEventListener('click', hidePortfolioPic, true);
+    //console.log(item);
 });
