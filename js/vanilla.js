@@ -648,8 +648,15 @@ console.log(portfolioArray);
 
 //create the single page div for the works details
 
+/*var rowesoneDiv2 = document.createElement('div');
+rowesoneDiv2.classList.add('col-md-6', 'portfolio-item');
+rowesone.appendChild(rowesoneDiv2);
+rowesoneDiv2.innerHTML = 'Back to portfolio';*/
+
 var rowesoneDiv = document.createElement('div');
-rowesoneDiv.setAttribute('class', 'portfolio-item');
+//rowesoneDiv.setAttribute('class', 'portfolio-item');
+rowesoneDiv.classList.add('col-md-6', 'portfolio-item');
+//rowesoneDiv.style.paddingLeft = '10em';
 rowesone.appendChild(rowesoneDiv);
 
 //create the a tag and img
@@ -671,12 +678,45 @@ rowesoneDiv.appendChild(rowesoneH3);
 var rowesoneP = document.createElement('p');
 rowesoneDiv.appendChild(rowesoneP);
 
+//second div
+var rowesoneDiv2 = document.createElement('div');
+rowesoneDiv2.classList.add('col-md-6', 'portfolio-item');
+rowesone.appendChild(rowesoneDiv2);
+//rowesoneDiv2.innerHTML = 'Back to portfolio';
+//rowesoneDiv2.innerHTML.style.float = 'right';
 
+rowesoneDiv2H3 = document.createElement('h3');
+rowesoneDiv2H3.setAttribute('class', 'floattotheright');
+//rowesoneDiv2H3.innerHTML = 'Back to portfolio';
+rowesoneDiv2.appendChild(rowesoneDiv2H3);
+
+//a href inside the h3 back to portfolio button
+var rowesoneDiv2H3A = document.createElement('a');
+rowesoneDiv2H3A.setAttribute('href', '');
+//rowesoneDiv2H3A.innerHTML = "Back to portfolio";
+rowesoneDiv2H3.appendChild(rowesoneDiv2H3A);
+//var rR = document.querySelector('#rowesone');
+
+
+var hideIndPortfolio = function(event){
+    rowes.style.display = 'block';
+    rowesone.style.display = 'none';
+    console.log(rowesone);
+    //event.target.parentElement.parentElement.parentElement.style.display = 'none';
+};
+
+/*setTimeout(function(){
+    rowesoneDiv2H3.addEventListener('click', hideIndPortfolio, true);
+}, 3000);*/
+rowesoneDiv2H3.addEventListener('click', hideIndPortfolio, true);
+
+console.log(rowesone);
 
 var hidePortfolioPic = function(event){
 
     event.preventDefault();
     event.currentTarget.parentElement.style.display = "none";
+    //rowes.style.display = 'none';
     /*rowesone.style.height = '5em';
     rowesone.style.backgroundColor = "red";*/
     rowesone.style.display = 'block';
@@ -689,7 +729,8 @@ var hidePortfolioPic = function(event){
     rowesoneA2.setAttribute('href', event.target.parentElement.href);
     rowesoneA2.innerText = event.target.parentElement.nextElementSibling.firstElementChild.innerText;
     rowesoneP.innerText = event.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.innerText;
-    
+    rowesoneDiv2H3A.innerHTML = "Back to portfolio";
+
     console.log(event.target.parentElement.href);
     console.log(event.target.src);
     console.log(event.target);
@@ -703,3 +744,4 @@ portfolioArray.forEach(function(item){
     item.addEventListener('click', hidePortfolioPic, true);
     //console.log(item);
 });
+
