@@ -177,6 +177,7 @@ for(var i = 0; i < worksamples.length; i++){
     //add the h3 tag 
     workh3 = document.createElement('h3');
     workhref2 = document.createElement('a');
+    //I only want the pic to be clickable but how?
     workhref2.setAttribute('href', worksamples[i].href);
     workhref2.innerText = worksamples[i].title;
     workh3.appendChild(workhref2);
@@ -737,11 +738,48 @@ var hidePortfolioPic = function(event){
     console.log(event.target.parentElement.parentElement);
     console.log(event.target.parentElement.nextElementSibling.firstElementChild.innerText);
     console.log(event.target.parentElement.parentElement.firstElementChild.nextElementSibling.nextElementSibling.innerText);
-
+    console.log(event.target.parentElement.nextElementSibling.firstElementChild);
 };
 
 portfolioArray.forEach(function(item){
     item.addEventListener('click', hidePortfolioPic, true);
-    //console.log(item);
 });
 
+console.log(portfolioArray);
+
+//how do you make the h3 below the pic in the portfolio link to the single portfolio thing. 
+//i had completely forgotten!
+
+var clickOnTitle = function(event){
+    event.preventDefault();
+    console.log(event.target);
+    rowes.style.display = 'none';
+    rowesone.style.display = 'block';
+    //event.target.parentElement.nextElementSibling.firstElementChild.innerHTML = 'Click on the pic above please.';
+};
+
+portfolioArray.forEach(function(item){
+    //item.addEventListener('click', clickOnTitle, true);
+});
+
+var titlezArray = [];
+
+var getTheTitleInPortfolio = function(){
+
+   for(var i = 0; i < portfolioArray.length; i++){
+    titlezArray.push(portfolioArray[i].firstElementChild.nextElementSibling.firstElementChild);
+   } 
+};
+
+var titlezResult = getTheTitleInPortfolio();
+console.log(titlezArray);
+
+var redTitle = function(event){
+
+    event.preventDefault();
+    event.target.style.color = 'red';
+};
+
+titlezArray.forEach(function(item){
+    item.addEventListener('mouseover', redTitle, true);
+});
