@@ -709,7 +709,9 @@ var hideIndPortfolio = function(event){
 /*setTimeout(function(){
     rowesoneDiv2H3.addEventListener('click', hideIndPortfolio, true);
 }, 3000);*/
+
 rowesoneDiv2H3.addEventListener('click', hideIndPortfolio, true);
+
 
 console.log(rowesone);
 
@@ -778,8 +780,28 @@ var redTitle = function(event){
 
     event.preventDefault();
     event.target.style.color = 'red';
+    rowes.style.display = 'none';
+    rowesone.style.display = 'blocked';
+    //rowesone.innerHTML = 'HELLO!!!!';
+    console.log(rowesoneDiv);
+    console.log(event.target);
+    rowesoneA.setAttribute('href', event.target.parentElement.previousElementSibling.href);
+    rowesoneImg.setAttribute('src', event.target.parentElement.previousElementSibling.firstElementChild.src);
+    rowesoneA2.setAttribute('href', event.target.href);
+    rowesoneA2.innerText = event.target.innerText;
+    rowesoneP.innerText = event.target.parentElement.nextElementSibling.innerText;
+    rowesoneDiv2H3A.innerHTML = "Back to portfolio";
 };
 
+//click event gives me a js error
 titlezArray.forEach(function(item){
     item.addEventListener('mouseover', redTitle, true);
 });
+
+//does not behave consistently
+// setInterval(function(){
+//     titlezArray.forEach(function(item){
+//         item.addEventListener('mouseover', redTitle, true);
+//     });
+
+// }, 2000);
