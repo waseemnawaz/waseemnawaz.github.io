@@ -179,7 +179,8 @@ for(var i = 0; i < worksamples.length; i++){
     workhref2 = document.createElement('a');
     //I only want the pic to be clickable but how?
     workhref2.setAttribute('href', worksamples[i].href);
-    workhref2.innerText = worksamples[i].title;
+    //workhref2.innerText = worksamples[i].title;
+    workhref2.innerHTML = worksamples[i].title;
     workh3.appendChild(workhref2);
     portfolio_item.appendChild(workh3);
 
@@ -800,18 +801,18 @@ var myName;
 var redTitle = function(event){
     event.preventDefault();
     console.log(event.target);
-    myName = event.target.parentElement.parentElement;
+    myName = event.target;
     console.log(myName);
     event.target = myName;
     console.log(myName);
     rowes.style.display = 'none';
     rowesone.style.display = 'block';
     //rowesone.innerHTML = "hello";
-    rowesoneA.setAttribute('href', myName.firstElementChild.href);
-    rowesoneImg.setAttribute('src', myName.firstElementChild.firstElementChild.src);
-    rowesoneA2.setAttribute('href', myName.firstElementChild.nextElementSibling.firstElementChild.href);
-    rowesoneA2.innerText = myName.firstElementChild.nextElementSibling.firstElementChild.innerText;
-    rowesoneP.innerText = myName.lastElementChild.innerText;
+    rowesoneA.setAttribute('href', myName.parentElement.href);
+    rowesoneImg.setAttribute('src', myName.src);
+    rowesoneA2.setAttribute('href', myName.parentElement.nextElementSibling.firstElementChild.href);
+    rowesoneA2.innerText = myName.parentElement.nextElementSibling.firstElementChild.innerText;
+    rowesoneP.innerText = myName.parentElement.lastElementChild.innerText;
     rowesoneDiv2H3A.innerHTML = "Back to portfolio";
     console.log(rowesone);
 };
@@ -837,9 +838,11 @@ console.log(portfolioArray);
 var theItemH3Href;
 var theItemH3HrefTitle; 
 portfolioArray.forEach(function(item){
-    //theItemH3Href = item.firstElementChild.nextElementSibling.firstElementChild.style.display = 'none';
+    theItemH3Href = item.firstElementChild.nextElementSibling.firstElementChild.style.display = 'none';
     /*theItemH3HrefTitle = document.createElement('h3');
     theItemH3HrefTitle.innerHTML = item.firstElementChild.nextElementSibling.firstElementChild.innerHTML;
     item.appendChild(theItemH3HrefTitle);
     console.log(theItemH3Href);*/
 });
+
+//nothing works: make the image the solo event.target!
