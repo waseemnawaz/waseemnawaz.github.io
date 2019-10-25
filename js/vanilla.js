@@ -209,7 +209,9 @@ for(var i = 0; i < worksamples.length; i++){
 
 add_info_to_work();
 console.log(rowes);
-console.log(portfolio_item)
+console.log(portfolio_item);
+
+
 //The introduction
 
 var workintro = document.createElement('div');
@@ -743,8 +745,9 @@ var hidePortfolioPic = function(event){
     console.log(event.target.parentElement.nextElementSibling.firstElementChild);
 };
 
+//i think having a separate click for the pic and the title is not practical. So I will pause this. 
 portfolioArray.forEach(function(item){
-    item.addEventListener('click', hidePortfolioPic, true);
+    //item.addEventListener('click', hidePortfolioPic, true);
 });
 
 console.log(portfolioArray);
@@ -776,13 +779,11 @@ var getTheTitleInPortfolio = function(){
 var titlezResult = getTheTitleInPortfolio();
 console.log(titlezArray);
 
-var redTitle = function(event){
+/*var redTitle = function(event){
 
     event.preventDefault();
-    event.target.style.color = 'red';
     rowes.style.display = 'none';
     rowesone.style.display = 'blocked';
-    //rowesone.innerHTML = 'HELLO!!!!';
     console.log(rowesoneDiv);
     console.log(event.target);
     rowesoneA.setAttribute('href', event.target.parentElement.previousElementSibling.href);
@@ -791,11 +792,37 @@ var redTitle = function(event){
     rowesoneA2.innerText = event.target.innerText;
     rowesoneP.innerText = event.target.parentElement.nextElementSibling.innerText;
     rowesoneDiv2H3A.innerHTML = "Back to portfolio";
+};*/
+
+var myName;
+//var rowestwo = document.getElementById('rowestwo');
+
+var redTitle = function(event){
+    event.preventDefault();
+    console.log(event.target);
+    myName = event.target.parentElement.parentElement;
+    console.log(myName);
+    event.target = myName;
+    console.log(myName);
+    rowes.style.display = 'none';
+    rowesone.style.display = 'block';
+    //rowesone.innerHTML = "hello";
+    rowesoneA.setAttribute('href', myName.firstElementChild.href);
+    rowesoneImg.setAttribute('src', myName.firstElementChild.firstElementChild.src);
+    rowesoneA2.setAttribute('href', myName.firstElementChild.nextElementSibling.firstElementChild.href);
+    rowesoneA2.innerText = myName.firstElementChild.nextElementSibling.firstElementChild.innerText;
+    rowesoneP.innerText = myName.lastElementChild.innerText;
+    rowesoneDiv2H3A.innerHTML = "Back to portfolio";
+    console.log(rowesone);
 };
 
-//click event gives me a js error
+portfolioArray.forEach(function(item){
+    item.addEventListener('click', redTitle, true);
+});
+
+//click event gives me a js error, so I will pause this. 
 titlezArray.forEach(function(item){
-    item.addEventListener('mouseover', redTitle, true);
+    //item.addEventListener('click', redTitle, true);
 });
 
 //does not behave consistently
@@ -805,3 +832,14 @@ titlezArray.forEach(function(item){
 //     });
 
 // }, 2000);
+
+console.log(portfolioArray);
+var theItemH3Href;
+var theItemH3HrefTitle; 
+portfolioArray.forEach(function(item){
+    //theItemH3Href = item.firstElementChild.nextElementSibling.firstElementChild.style.display = 'none';
+    /*theItemH3HrefTitle = document.createElement('h3');
+    theItemH3HrefTitle.innerHTML = item.firstElementChild.nextElementSibling.firstElementChild.innerHTML;
+    item.appendChild(theItemH3HrefTitle);
+    console.log(theItemH3Href);*/
+});
