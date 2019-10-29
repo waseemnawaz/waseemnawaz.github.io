@@ -115,21 +115,21 @@ var worksamples =
         href: "https://alpacasweatr.herokuapp.com/",
         scr: "img/sweatr12.jpg",
         title: "Sweatr",
-        text: "A totally fake Ruby on Rails ecommerce website. Same as the other Ruby on Rails websites on here. It's a fake website hosted on Heroku. I adapted the code from the Bike Berlin website in order to practise my coding skills."
+        text: "A totally fake ecommerce website, like the other Ruby on Rails websites on here. It's hosted on Heroku. I adapted the code from the Bike Berlin website in order to practise my coding skills."
     },
 
     {
         href: "http://director-karl-30485.bitballoon.com/",
         scr: "img/laleche.jpg",
         title: "Cebichería La Leche",
-        text: "A static website for a cebiche restaurant in Lima, Peru."
+        text: "A static website for a cebiche restaurant in Lima, Peru. It's currently hard coded HTML, CSS and very little JS, almost all JQuery."
     },
 
     {
         href: "https://uneteperu.github.io/",
         scr: "img/unete.jpg",
         title: "Unete",
-        text: "A website for an organisation that helps poor students find jobs in Lima."
+        text: "A website for an organisation that helps poor students find jobs in Lima. It's hard coded HTML, CSS and a tiny little bit of JQuery."
     }
    
 ];
