@@ -92,7 +92,7 @@ var worksamples =
         href: "https://bikeberlin.herokuapp.com/",
         scr: "img/bike1.jpg",
         title: "BikeBerlin",
-        text: "A Ruby on Rails ecommerce website."
+        text: "A Ruby on Rails ecommerce website I created when I first learned web development. Basically a CRUD app where a user can log in, log out, create, read, update and delete bikes. Gem Devise for authentication and CanCanCan for Authorization. Totally fake website hosted on Heroku."
 
     },
 
@@ -100,14 +100,14 @@ var worksamples =
         href: "https://maurowgomez.herokuapp.com/",
         scr: "img/maurow.jpg",
         title: "Maurow Gómez",
-        text: "A personal website, including a blog, made using Ruby on Rails." 
+        text: "A personal website, including a blog, made using Ruby on Rails. This was a bit of an overkill I guess. You don't need a Ruby on Rails website for a simple blog but this was created for a friend shortly after I learned web development. I had no idea that WordPress even existed. So I copied and pasted the code for the bike shop (Bike Berlin) and I created this website." 
     },
 
     {
         href: "https://mynewblogg.herokuapp.com/",
         scr: "img/forest.jpg",
         title: "Waseem's blog",
-        text: "A blog made using Ruby on Rails."
+        text: "A blog made using Ruby on Rails. THIS IS NOT MY BLOG! Again, shortly after completing a course with Careerfoundry I decided to copy paste the rails commands and ruby codes in order to create a blog. It was just for show. Hosted on Heroku, gem Devise for Authentication and CanCanCan for Authorization."
 
     },
 
@@ -115,7 +115,7 @@ var worksamples =
         href: "https://alpacasweatr.herokuapp.com/",
         scr: "img/sweatr12.jpg",
         title: "Sweatr",
-        text: "A Ruby on Rails ecommerce website."
+        text: "A totally fake Ruby on Rails ecommerce website. Same as the other Ruby on Rails websites on here. It's a fake website hosted on Heroku. I adapted the code from the Bike Berlin website in order to practise my coding skills."
     },
 
     {
@@ -336,7 +336,8 @@ var add_pics_to_gallery = function(array){
     for(var i = 0; i < array.length; i++){
         // the div
         divGallery = document.createElement('div');
-        divGallery.classList.add('col-md-3', 'col-xs-6');
+        //divGallery.classList.add('col-md-3', 'col-xs-6');
+        divGallery.classList.add('col-md-3');
         links.appendChild(divGallery);
 
         // the a href
@@ -801,20 +802,23 @@ var myName;
 var redTitle = function(event){
     event.preventDefault();
     console.log(event.target);
-    myName = event.target;
+    //myName = event.target.parentElement.parentElement;
+    myName = event.currentTarget;
     console.log(myName);
-    event.target = myName;
+    event.currentTarget = myName;
     console.log(myName);
     rowes.style.display = 'none';
     rowesone.style.display = 'block';
     //rowesone.innerHTML = "hello";
-    rowesoneA.setAttribute('href', myName.parentElement.href);
-    rowesoneImg.setAttribute('src', myName.src);
-    rowesoneA2.setAttribute('href', myName.parentElement.nextElementSibling.firstElementChild.href);
-    rowesoneA2.innerText = myName.parentElement.nextElementSibling.firstElementChild.innerText;
-    rowesoneP.innerText = myName.parentElement.lastElementChild.innerText;
+    rowesoneA.setAttribute('href', myName.firstElementChild.href);
+    rowesoneImg.setAttribute('src', myName.firstElementChild.firstElementChild.src);
+    rowesoneA2.setAttribute('href', myName.firstElementChild.nextElementSibling.firstElementChild.href);
+    rowesoneA2.innerText = myName.firstElementChild.nextElementSibling.firstElementChild.innerText;
+    rowesoneP.innerText = myName.lastElementChild.innerText;
     rowesoneDiv2H3A.innerHTML = "Back to portfolio";
     console.log(rowesone);
+    console.log(rowesoneA2);
+    console.log(event.currentTarget);
 };
 
 portfolioArray.forEach(function(item){
@@ -838,7 +842,7 @@ console.log(portfolioArray);
 var theItemH3Href;
 var theItemH3HrefTitle; 
 portfolioArray.forEach(function(item){
-    theItemH3Href = item.firstElementChild.nextElementSibling.firstElementChild.style.display = 'none';
+    //theItemH3Href = item.firstElementChild.nextElementSibling.firstElementChild.style.display = 'none';
     /*theItemH3HrefTitle = document.createElement('h3');
     theItemH3HrefTitle.innerHTML = item.firstElementChild.nextElementSibling.firstElementChild.innerHTML;
     item.appendChild(theItemH3HrefTitle);
@@ -846,3 +850,5 @@ portfolioArray.forEach(function(item){
 });
 
 //nothing works: make the image the solo event.target!
+
+console.log(rowes);
