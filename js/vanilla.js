@@ -582,6 +582,7 @@ var emailWhenSubmit = function(event){
         console.log(emailInForm.value);
         console.log(textarea.value);
         contactsH3.innerHTML = "The Annoying Contact Form";
+        contactsH3.style.color = '#ff748c';
 
     }
 
@@ -599,7 +600,7 @@ var emailWhenSubmit = function(event){
 };
 
 //Actually, I want them to use it so this button event is commented out!
-//button.addEventListener('click', emailWhenSubmit, true);
+button.addEventListener('click', emailWhenSubmit, true);
 
 console.log(pimail2Href.outerHTML);
 
@@ -852,3 +853,4 @@ portfolioArray.forEach(function(item){
 //nothing works: make the image the solo event.target!
 
 console.log(rowes);
+
