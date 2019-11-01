@@ -30,27 +30,30 @@
           })(window,document,'script','dataLayer','GTM-M3DFVBV');</script>
     <!-- End Google Tag Manager -->
     <script>
-      //i might have to do this with GTM
-       /*window.dataLayer = window.dataLayer || [];
-    (function(){
-      var textarea = document.querySelector('textarea');
-      var button = document.querySelector('button[type="submit"]');
+      //i did this with GTM
+   /* (function(){
+  	  var textarea = document.querySelector('textarea');
       var recordMessages = function(event){
           window.dataLayer.push({
           eventTarget: event.target.value,
           event: 'recordTheMessage'
         });
       };
-      textarea.addEventListener('change', recordMessages, true);
+     textarea.addEventListener('change', recordMessages, true);
+  })();
+      (function(){
+  	  var button = document.querySelector('button[type="submit"]');
+      var statement = "On second thought, this contact form is really just for decoration"; 			  var rest = " purposes. Please click on the email below to write me a message. Thanks.";
+      var saving = " By the way here is what you wrote me before: ";
       var theResult = function(){
           dataLayer.forEach(function(item){
-          console.log(item.eventTarget);
-          console.log(item.event);
-          textarea.value = textarea.value + item.eventTarget;
+          //console.log(item.eventTarget);
+          //console.log(item.event);
+          textarea.value = statement + rest + saving + '\n' + item.eventTarget;
         });
       };
       button.addEventListener('click', theResult, true);
-    })();*/
+  })();*/
     </script>
   </head>
 

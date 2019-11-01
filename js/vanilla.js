@@ -575,7 +575,7 @@ var emailWhenSubmit = function(event){
         textarea.style.fontWeight = 'bold';
         textarea.style.fontSize = '1.5em';
         textarea.style.color = '#ff748c';
-        textarea.value = "On second thought, this contact form is really just for decoration purposes. Please click on the email below to write me a message. Thanks."
+        //textarea.value = "On second thought, this contact form is really just for decoration purposes. Please click on the email below to write me a message. Thanks."
         visibleComment.innerHTML = '<a class="mail" href="mailto:waseemhijodenawaz@yahoo.es">waseemhijodenawaz@yahoo.es</a>';
         visibleComment.style.fontSize = '1.5em';
         console.log(firstInput.value);
